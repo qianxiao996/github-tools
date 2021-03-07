@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="727.0" prefWidth="1223.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tools.Controller">
+   <children>
+      <MenuBar fx:id="menu" prefHeight="32.0" prefWidth="1223.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="选项">
+               <items>
+                  <MenuItem fx:id="conf" mnemonicParsing="false" onAction="#edit_conf" text="配置" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="其他">
+            <items>
+              <MenuItem fx:id="about" mnemonicParsing="false" onAction="#about_go" text="关于" />
+                  <MenuItem fx:id="app_update" mnemonicParsing="false" onAction="#app_update_go" text="更新" />
+                  <MenuItem mnemonicParsing="false" onAction="#author_go" text="联系作者" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane fx:id="table" layoutY="32.0" prefHeight="695.0" prefWidth="1223.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Star项目查询">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="656.0" prefWidth="1217.0">
+                     <children>
+                        <TableView fx:id="star_table" layoutX="15.0" layoutY="49.0" prefHeight="593.0" prefWidth="1193.0">
+                          <columns>
+                              <TableColumn fx:id="star_table_user" prefWidth="100.0" text="用户" />
+                            <TableColumn fx:id="star_table_obj_name" prefWidth="150.0" text="项目名称" />
+                            <TableColumn fx:id="star_table_obj_address" prefWidth="370.0" text="项目地址" />
+                              <TableColumn fx:id="star_table_obj_miaoshu" prefWidth="377.0" text="项目描述" />
+                              <TableColumn fx:id="star_table_date" prefWidth="180.0" text="更新日期" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="17.0" layoutY="16.0" text="用户：" />
+                        <Label layoutX="241.0" layoutY="16.0" text="查询时间：" />
+                        <DatePicker fx:id="star_data_text" layoutX="316.0" layoutY="11.0" prefHeight="30.0" prefWidth="138.0" />
+                        <Label layoutX="592.0" layoutY="16.0" text="此处可以查询他人的Star项目。查询时间为项目更新时间到现在时间的数据" />
+                        <Button fx:id="star_go_button" layoutX="474.0" layoutY="11.0" mnemonicParsing="false" onAction="#star_go" prefHeight="30.0" text="查询数据" />
+                        <ComboBox fx:id="star_com_user" editable="true" layoutX="62.0" layoutY="11.0" prefHeight="30.0" prefWidth="155.0" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Releases查询">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="releases_table" layoutX="17.0" layoutY="51.0" prefHeight="593.0" prefWidth="1189.0">
+                           <columns>
+                              <TableColumn fx:id="releases_table_user" prefWidth="100.0" text="发布作者" />
+                              <TableColumn fx:id="releases_table_obj_name" prefWidth="190.0" text="项目名称" />
+                              <TableColumn fx:id="releases_table_obj_addrss" prefWidth="300.0" text="项目地址" />
+                              <TableColumn fx:id="releases_table_version" prefWidth="70.0" text="版本" />
+                              <TableColumn fx:id="releases_table_version_name" prefWidth="150.0" text="版本名称" />
+                              <TableColumn fx:id="releases_table_version_desc" prefWidth="183.0" text="版本描述" />
+                              <TableColumn fx:id="releases_table_date" prefWidth="180.0" text="更新时间" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="17.0" layoutY="16.0" text="项目名称：" />
+                        <Label layoutX="358.0" layoutY="16.0" text="查询时间：" />
+                        <DatePicker fx:id="releases_data_text" layoutX="433.0" layoutY="11.0" prefHeight="30.0" prefWidth="138.0" />
+                        <Label layoutX="683.0" layoutY="16.0" text="此处可以查询Releases，查询时间为选中时间到现在时间的数据" />
+                        <Button fx:id="releases_go_button" layoutX="591.0" layoutY="11.0" mnemonicParsing="false" onAction="#releases_go" text="查询数据" />
+                        <ComboBox fx:id="releases_com_obj" editable="true" layoutX="88.0" layoutY="11.0" prefHeight="30.0" prefWidth="264.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Commits查询">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="commit_table" layoutX="17.0" layoutY="51.0" prefHeight="593.0" prefWidth="1188.0">
+                           <columns>
+                              <TableColumn fx:id="commit_table_user" prefWidth="130.0" text="提交用户" />
+                              <TableColumn fx:id="commit_table_obj_name" prefWidth="190.0" text="项目名称" />
+                              <TableColumn fx:id="commit_table_address" prefWidth="370.0" text="Commit地址" />
+                              <TableColumn fx:id="commit_table_desc" prefWidth="300.0" text="Commit描述" />
+                              <TableColumn fx:id="commit_table_date" prefWidth="180.0" text="提交时间" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="17.0" layoutY="16.0" text="项目名称：" />
+                        <Label layoutX="367.0" layoutY="16.0" text="查询时间：" />
+                        <DatePicker fx:id="commits_date" layoutX="442.0" layoutY="11.0" prefHeight="30.0" prefWidth="138.0" />
+                        <Label layoutX="734.0" layoutY="16.0" text="此处可以查询Commits，查询时间为选中时间到现在时间的数据" />
+                        <Button fx:id="commits_go_button" layoutX="600.0" layoutY="11.0" mnemonicParsing="false" onAction="#commits_go" text="查询数据" />
+                        <ComboBox fx:id="commit_name_obj" editable="true" layoutX="89.0" layoutY="11.0" prefHeight="30.0" prefWidth="264.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Issus提交查询">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="issus_table" layoutX="17.0" layoutY="51.0" prefHeight="593.0" prefWidth="1193.0">
+                           <columns>
+                              <TableColumn fx:id="issus_table_user" prefWidth="130.0" text="用户" />
+                              <TableColumn fx:id="issus_table_obj_name" prefWidth="150.0" text="项目名称" />
+                              <TableColumn fx:id="issus_table_obj_address" prefWidth="300.0" text="项目地址" />
+                              <TableColumn fx:id="issus_table_title" prefWidth="200.0" text="issus标题" />
+                              <TableColumn fx:id="issus_table_body" prefWidth="210.0" text="issus内容" />
+                              <TableColumn fx:id="issus_table_date" prefWidth="180.0" text="创建时间" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="17.0" layoutY="16.0" text="项目名称：" />
+                        <Label layoutX="366.0" layoutY="16.0" text="查询时间：" />
+                        <DatePicker fx:id="issus_date" layoutX="441.0" layoutY="11.0" prefHeight="30.0" prefWidth="138.0" />
+                        <Label layoutX="716.0" layoutY="16.0" text="此处可以查询issus，查询时间为选中时间到现在时间的数据" />
+                        <Button fx:id="issus_go_button" layoutX="599.0" layoutY="11.0" mnemonicParsing="false" onAction="#issus_go" text="查询数据" />
+                        <ComboBox fx:id="issus_name_obj" editable="true" layoutX="95.0" layoutY="11.0" prefHeight="30.0" prefWidth="255.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="新增项目查询">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="update_table" layoutX="17.0" layoutY="51.0" prefHeight="593.0" prefWidth="1194.0">
+                           <columns>
+                              <TableColumn fx:id="update_table_user" prefWidth="135.0" text="用户" />
+                              <TableColumn fx:id="update_table_obj_value" prefWidth="120.0" text="关键字" />
+                              <TableColumn fx:id="update_table_obj_name" prefWidth="170.0" text="项目名称" />
+                              <TableColumn fx:id="update_table_obj_address" prefWidth="285.0" text="项目地址" />
+                              <TableColumn fx:id="update_table_obj_desc" prefWidth="285.0" text="项目描述" />
+                              <TableColumn fx:id="update_table_date" prefWidth="180.0" text="更新时间" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="17.0" layoutY="16.0" text="关键字：" />
+                        <Label layoutX="256.0" layoutY="16.0" text="查询时间：" />
+                        <DatePicker fx:id="update_date" layoutX="331.0" layoutY="11.0" prefHeight="30.0" prefWidth="138.0" />
+                        <Button fx:id="update_go_button" layoutX="483.0" layoutY="11.0" mnemonicParsing="false" onAction="#update_go" text="查询数据" />
+                        <ComboBox fx:id="update_name_obj" editable="true" layoutX="73.0" layoutY="11.0" prefHeight="30.0" prefWidth="169.0" />
+                        <Label layoutX="580.0" layoutY="16.0" text="此处的时间为查询选中时间到当前时间的数据" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
